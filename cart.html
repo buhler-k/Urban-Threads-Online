@@ -31,7 +31,7 @@
     </div>
 
     <section class="cart-section">
-        <h2>Your Lux Basket</h2>
+        <h2>Your Lux Basket Summary</h2>
         <div id="cart-items"></div>
         <div class="cart-total">
             <p>Total: R<span id="total-amount">0.00</span></p>
@@ -40,29 +40,6 @@
     </section>
 
     <script type="module" src="store.js"></script>
-    <script>
-        import { getCartItems, calculateTotal } from './store.js';
-
-        document.addEventListener('DOMContentLoaded', () => {
-            const cartItemsContainer = document.getElementById('cart-items');
-            const totalAmountElement = document.getElementById('total-amount');
-
-            // Fetch cart items and display them
-            const cartItems = getCartItems();
-            cartItems.forEach(item => {
-                const itemElement = document.createElement('div');
-                itemElement.classList.add('cart-item');
-                itemElement.innerHTML = `
-                    <p>${item.name} - R${item.price.toFixed(2)}</p>
-                    <p>Quantity: ${item.quantity}</p>
-                `;
-                cartItemsContainer.appendChild(itemElement);
-            });
-
-            // Calculate and display total amount
-            const totalAmount = calculateTotal(cartItems);
-            totalAmountElement.textContent = totalAmount.toFixed(2);
-        });
-    </script>
+   
 </body>
 </html>
