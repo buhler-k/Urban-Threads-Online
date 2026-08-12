@@ -36,3 +36,62 @@
 .tooltip-text:hover{
     visibility: visible;
 }
+
+/* Main Product Area */
+
+#products {
+    margin-top: 22px;
+}
+
+.main-product-area {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 55vh);
+    width: 100%;
+}
+
+.grid {
+    position: relative;
+    overflow: hidden;
+    
+}
+
+.grid img{
+    width: 100%;
+    display: block;
+    
+}
+
+.category{
+    position: absolute;
+    top: 65%;
+    left: 40%;
+    
+}
+
+.overlay button {
+    height: 5vh;
+    width: 10vw;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.overlay button:hover{
+    background-color: rgb(212, 207, 207);
+}
+
+/* account */
+.account {
+    margin-top: 22px;
+    background-color: rgb(44, 41, 41);
+    color: white;
+}
+
+/* footer */
+
+.footer-content{
+    margin-top: 22px;
+    background-color: rgb(85, 79, 79);
+    color: white;
+}
