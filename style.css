@@ -30,10 +30,11 @@
 
 .right {
     position: relative;
-    right: 25%;
+    right: 17%;
 }
 
-.tooltip-text:hover{
+.tooltip-text:hover {
+    z-index: 1;
     visibility: visible;
 }
 
@@ -95,3 +96,5 @@
     background-color: rgb(85, 79, 79);
     color: white;
 }
+
+/* Shop */

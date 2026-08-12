@@ -3,9 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Your Lux Basket</title>
+    <link rel= "stylesheet" href="style.css">
+    <link rel= "stylesheet" href="responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
 </head>
 <body>
+    <div class="navbar">
+        <div class="left-elements">
+            <span class="material-symbols-outlined">Menu</span>
+            <span class="tooltip-text">Menu</span>
+        </div>
+
+        <div class="store-name"><a href="index.html">
+            <h2>URBAN-THREADS</h2></a>
+        </div>
+
+        <div class="right-icons">
+            <span class="material-symbols-outlined"><a href="shop.html">apparel</a></span>
+            <span class="tooltip-text">Shop</span>
+            <span class="material-symbols-outlined"><a href="cart.html">shopping_cart_checkout</a></span>
+            <span class="tooltip-text right">Cart</span>
+            <span class="material-symbols-outlined"><a href="login.html">person</a></span>
+            <span class="tooltip-text right">Login</span>
+        </div>
     
+    </div>
+
+    <section class="cart-section">
+        <h2>Your Lux Basket</h2>
+        <div id="cart-items"></div>
+        <div class="cart-total">
+            <p>Total: R<span id="total-amount">0.00</span></p>
+            <button id="checkout-btn">Proceed to Checkout</button>
+        </div>
+    </section>
+
+    <script type="module" src="store.js"></script>
+    <script>
+        import { getCartItems, calculateTotal } from './store.js';
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const cartItemsContainer = document.getElementById('cart-items');
+            const totalAmountElement = document.getElementById('total-amount');
+
+            // Fetch cart items and display them
+            const cartItems = getCartItems();
+            cartItems.forEach(item => {
+                const itemElement = document.createElement('div');
+                itemElement.classList.add('cart-item');
+                itemElement.innerHTML = `
+                    <p>${item.name} - R${item.price.toFixed(2)}</p>
+                    <p>Quantity: ${item.quantity}</p>
+                `;
+                cartItemsContainer.appendChild(itemElement);
+            });
+
+            // Calculate and display total amount
+            const totalAmount = calculateTotal(cartItems);
+            totalAmountElement.textContent = totalAmount.toFixed(2);
+        });
+    </script>
 </body>
 </html>
