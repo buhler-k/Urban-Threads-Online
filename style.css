@@ -1,0 +1,38 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+/* Navbar */
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #f0f0f0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    
+}
+
+.store-name{
+    margin-right: 40px;
+}
+
+.tooltip-text {
+    visibility: hidden;
+    position: relative;
+    top: 60%;
+    right: 45%;
+    padding: 5px;
+
+}
+
+.right {
+    position: relative;
+    right: 25%;
+}
+
+.tooltip-text:hover{
+    visibility: visible;
+}
