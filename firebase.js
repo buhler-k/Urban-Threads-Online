@@ -5,7 +5,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/12.17.1/fireba
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyCCNT3yecstHydsZ1e0vRyeZHbO8CerSnk",
+  apiKey: "AIzaSyCKLmLSU59CLcSqOd5fsYAublODydr7dyA",
   authDomain: "urbanthreadsonlinestore-62420.firebaseapp.com",
   projectId: "urbanthreadsonlinestore-62420",
   storageBucket: "urbanthreadsonlinestore-62420.firebasestorage.app",

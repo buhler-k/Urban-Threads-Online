@@ -21,22 +21,42 @@
 
 .tooltip-text {
     visibility: hidden;
-    position: relative;
+    position: absolute;
+    cursor: pointer;
+    background-color: #323232;
+    z-index: 1;
+    white-space: nowrap;
+    border-radius: 5px;
     top: 60%;
     right: 45%;
     padding: 5px;
-
 }
+
 
 .right {
     position: relative;
     right: 17%;
 }
 
-.tooltip-text:hover {
-    z-index: 1;
+.right-icons{
+    display: flex;
+}
+
+a:link{
+    text-decoration: none;
+    color: black;
+}
+
+a:visited{
+    color: black;
+}
+
+.tooltip-text:hover{
     visibility: visible;
 }
+
+
+
 
 /* Main Product Area */
 
