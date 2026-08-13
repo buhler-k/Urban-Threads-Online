@@ -100,8 +100,9 @@ onAuthStateChanged(auth, async(user) => {
         });
 
         
-    } catch (error) {
+        } catch (error) {
         console.error("Error drawing products catalog layout", error);
+        }
     }
 
     async function handleAddToCart(id, name, price) {
@@ -210,5 +211,3 @@ onAuthStateChanged(auth, async(user) => {
             });
         }
     }
-    
-}
