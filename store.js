@@ -10,7 +10,7 @@ const productsGrid = document.getElementById("products-grid");
 const cartContainer = document.getElementById("cart-items");
 const cartCount =document.getElementById("total-amount");
 const checkoutBtn = document.getElementById("checkout-btn");
-const authBtn = document.getElementById("auth-btn");
+// const authBtn = document.getElementById("auth-btn");
 const loginLink = document.querySelector('.right-icons a[href="login.html"]');
 const loginIcon = loginLink ? loginLink.querySelector(".material-symbols-outlined") : null;
 const loginTooltip = document.getElementById("login-tooltip"); 
