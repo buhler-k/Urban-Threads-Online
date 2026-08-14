@@ -4,7 +4,7 @@
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
+    
 }
 
 /* Navbar */
@@ -188,24 +188,61 @@ a:visited{
 
 /* Login */
 
-.login-form{
-    max-width: 450px;
-    margin: 60px auto;
+.account-page {
+    background-image: url("../ASSETS/Accessory.jpg");
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    box-sizing: border-box;
+    height: 100vh;
+}
+
+#login-form{
+    margin-top: 22px;
+    width: 40%;
     padding: 20px;
-    background: #fafafa;
+    background-color: #ffffff;
+    box-shadow: rgba(0, 0, 0, 0.05);
+    box-sizing: border-box;
     border: 1px solid #eee;
     border-radius: 8px;
 }
 
-.signing-in{
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin-bottom: 20px;
+#signing-up-form{
+    width: 40%;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: rgba(0, 0, 0, 0.05);
+    box-sizing: border-box;
+    border: 1px solid #eee;
+    border-radius: 8px;
 }
 
-.siogning-in input{
+
+
+.signing-in input{
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
+}
+
+#login-form .login-btn {
+    width: 52px;
+}
+
+.login-btn {
+    cursor: pointer;
+    margin-top: 8px;
+    height: 35px;
+    border: 1px solid #ccc;
+}
+
+
+/* cart */
+#checkout-btn{
+    background-color: black;
+    color: white;
+    cursor: pointer;
 }

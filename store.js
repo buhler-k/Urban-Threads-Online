@@ -7,11 +7,10 @@ let currentUser= null;
 let cartItems = [];
 
 const productsGrid = document.getElementById("products-grid");
-const cartContainer = document.getElementById("cart-items-container");
-const cartCount =document.getElementById("cart-total-price");
+const cartContainer = document.getElementById("cart-items");
+const cartCount =document.getElementById("total-amount");
 const checkoutBtn = document.getElementById("checkout-btn");
-// const authBtn = document.getElementById("auth-btn");
-// const userDisplay= document.getElementById("user-display");
+const authBtn = document.getElementById("auth-btn");
 const loginLink = document.querySelector('.right-icons a[href="login.html"]');
 const loginIcon = loginLink ? loginLink.querySelector(".material-symbols-outlined") : null;
 const loginTooltip = document.getElementById("login-tooltip"); 
@@ -82,7 +81,8 @@ onAuthStateChanged(auth, async(user) => {
                         <span class="product-price">R${typeof product.price ==="number" ? product.price.toFixed(2) : product.price} </span>
                         <button class="add-to-cart-btn" data-id="${productDoc.id}"
                             data-name="${product.name}"
-                            data-price="${product.price}">
+                            data-price="${product.price}"
+                            data-image="${product.imageURL || "./ASSETS/placeholder.jpg"}">
                             Add to Cart
                         </button>
                     </div>
@@ -95,7 +95,8 @@ onAuthStateChanged(auth, async(user) => {
                 const id = e.target.getAttribute("data-id");
                 const name = e.target.getAttribute("data-name");
                 const price = parseFloat(e.target.getAttribute("data-price"));
-                handleAddToCart(id, name, price);
+                const image = e.target.getAttribute("data-image");
+                handleAddToCart(id, name, price, image);
             });
         });
 
@@ -105,7 +106,7 @@ onAuthStateChanged(auth, async(user) => {
         }
     }
 
-    async function handleAddToCart(id, name, price) {
+    async function handleAddToCart(id, name, price, image) {
         if (!currentUser) {
             alert("You must log in to start shopping!");
             window.location.href="login.html";
@@ -115,11 +116,11 @@ onAuthStateChanged(auth, async(user) => {
         if (existingProduct) {
             existingProduct.quantity += 1;
         } else {
-            cartItems.push({ id, name, price, quantity: 1 });
+            cartItems.push({ id, name, price, image, quantity: 1 });
         }
 
         await saveUserCart();
-        alert(`${name} added to cart!`);
+        // alert(`${name} added to cart!`);
     }
 
     async function saveUserCart() {
@@ -152,12 +153,12 @@ onAuthStateChanged(auth, async(user) => {
     }
     function renderCartUI() {
         if (!cartContainer) return;
-        cartContainer.innerHTML = "";
+        cartContainer.innerHTML = ""; 
         let rollingTotal = 0;
 
         if (cartItems.length===0){
             cartContainer.innerHTML = `<p class="empty-msg">Your Lux Basket is currently empty!</p>`;
-            if (cartTotalElement) cartTotalElement.textContent = "0.00";
+            if (cartCount) cartCount.textContent = "0.00";
             return;
         }
 
@@ -166,14 +167,16 @@ onAuthStateChanged(auth, async(user) => {
             rollingTotal += costSum;
 
             cartContainer.innerHTML += `
-            <div class="cart-row">
-                <div class="cart-item-info">
+            <div class="cart-row" style="display: flex; align-items: center; margin-bottom: 55px;">
+                <img src="${item.image || "./ASSETS/placeholder.jpg"}" style="width:60px; height: 65px; object-fit: cover; margin-right: 15px; border-radius: 4px;">
+
+                <div class="cart-item-info" style="flex-grow: 1;" >
                     <h4>${item.name}</h4>
                     <p>R${item.price.toFixed(2)} x ${item.quantity}</p>
                 </div>
                 <div class="cart-item-actions">
-                    <span class="subtotal"> R${costSum.toFixed(2)}</span>
-                    <button class="remove-btn" data-index = "${index}">Remove</button>
+                    <span class="subtotal" style="font-weight: bold;"> R${costSum.toFixed(2)}</span>
+                    <button class="remove-btn" data-index = "${index}" style="background-color: black; color: white; cursor: pointer;">Remove</button>
                 </div>
             </div>`;
         });
